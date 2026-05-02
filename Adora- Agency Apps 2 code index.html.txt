@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Adora Digital Agency — Facebook Tracking Setup Expert</title>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --blue-50:#eff6ff;--blue-100:#dbeafe;--blue-200:#bfdbfe;
+  --blue-400:#60a5fa;--blue-500:#3b82f6;--blue-600:#2563eb;
+  --blue-700:#1d4ed8;--blue-800:#1e40af;--blue-900:#1e3a8a;
+  --slate-50:#f8fafc;--slate-100:#f1f5f9;--slate-200:#e2e8f0;
+  --slate-300:#cbd5e1;--slate-400:#94a3b8;--slate-500:#64748b;
+  --slate-600:#475569;--slate-700:#334155;--slate-800:#1e293b;
+  --slate-900:#0f172a;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Plus Jakarta Sans','Hind Siliguri',sans-serif;background:#f8fafc;color:var(--slate-900);overflow-x:hidden;line-height:1.6}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:22px 0;transition:all .35s}
+nav.s{background:rgba(255,255,255,.92);backdrop-filter:blur(16px);box-shadow:0 1px 0 var(--slate-200);padding:12px 0}
+.w{max-width:1200px;margin:0 auto;padding:0 28px}
+.nav-row{display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.brand-icon{width:42px;height:42px;background:var(--blue-600);border-radius:12px;display:flex;align-items:center;justify-content:center}
+.brand-name{font-size:19px;font-weight:800;color:var(--slate-900)}.brand-name b{color:var(--blue-600)}
+.nav-links{display:flex;align-items:center;gap:36px}
+.nav-links a{text-decoration:none;font-size:14px;font-weight:600;color:var(--slate-600);transition:color .2s}
+.nav-links a:hover{color:var(--blue-600)}
+.nav-btn{padding:10px 22px;background:var(--blue-600);color:#fff;border-radius:100px;font-size:14px;font-weight:700;text-decoration:none;transition:all .2s;box-shadow:0 4px 14px rgba(37,99,235,.3)}
+.nav-btn:hover{background:var(--blue-700);transform:translateY(-2px)}
+
+/* ── HERO ── */
+.hero{padding:148px 0 100px;position:relative;overflow:hidden;background:linear-gradient(160deg,#fff 60%,var(--blue-50) 100%)}
+.hero::before{content:'';position:absolute;width:600px;height:600px;background:radial-gradient(circle,rgba(37,99,235,.07) 0%,transparent 70%);top:-100px;right:-100px;border-radius:50%}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;padding:6px 16px;background:var(--blue-50);border:1px solid var(--blue-200);border-radius:100px;font-size:12px;font-weight:700;color:var(--blue-700);letter-spacing:.08em;text-transform:uppercase;margin-bottom:24px}
+.badge-dot{width:7px;height:7px;background:var(--blue-500);border-radius:50%;animation:blink 1.5s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+.hero h1{font-size:clamp(30px,4vw,52px);font-weight:900;line-height:1.1;color:var(--slate-900);margin-bottom:22px}
+.hero h1 .hl{color:var(--blue-600);position:relative;display:inline-block}
+.hero h1 .hl::after{content:'';position:absolute;left:0;bottom:-4px;width:100%;height:4px;background:var(--blue-200);border-radius:4px}
+.hero-sub{font-size:17px;color:var(--slate-600);margin-bottom:36px;max-width:480px;font-weight:500;line-height:1.7}
+.hero-btns{display:flex;flex-wrap:wrap;gap:14px}
+.btn-p{display:inline-flex;align-items:center;gap:8px;padding:16px 32px;background:var(--blue-600);color:#fff;border-radius:16px;font-size:16px;font-weight:700;text-decoration:none;box-shadow:0 10px 30px rgba(37,99,235,.3);transition:all .2s}
+.btn-p:hover{background:var(--blue-700);transform:translateY(-3px);box-shadow:0 16px 40px rgba(37,99,235,.35)}
+.btn-s{display:inline-flex;align-items:center;gap:8px;padding:16px 32px;background:#fff;color:var(--slate-800);border:1.5px solid var(--slate-200);border-radius:16px;font-size:16px;font-weight:700;text-decoration:none;transition:all .2s}
+.btn-s:hover{border-color:var(--blue-300);color:var(--blue-700);transform:translateY(-3px)}
+
+/* ── DASHBOARD MOCKUP ── */
+.dash{background:#fff;border-radius:28px;box-shadow:0 20px 60px rgba(15,23,42,.12),0 0 0 1px rgba(15,23,42,.06);padding:24px;position:relative}
+.dash-topbar{display:flex;align-items:center;gap:8px;margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid var(--slate-100)}
+.dtb-dot{width:10px;height:10px;border-radius:50%}
+.dtb-url{flex:1;background:var(--slate-50);border-radius:8px;padding:6px 12px;font-size:12px;color:var(--slate-400);font-weight:500}
+.dash-stats{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px}
+.dstat{background:var(--slate-50);border-radius:14px;padding:14px;border:1px solid var(--slate-100)}
+.dstat-label{font-size:10px;font-weight:700;color:var(--slate-400);text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px}
+.dstat-val{font-size:26px;font-weight:900;color:var(--slate-900)}
+.dstat-chg{font-size:11px;font-weight:700;color:#10b981;margin-top:2px}
+.dstat.full{grid-column:span 2;background:var(--blue-600);border-color:var(--blue-600)}
+.dstat.full .dstat-label{color:rgba(255,255,255,.6)}
+.dstat.full .dstat-val{color:#fff;font-size:20px}
+.dstat.full .dstat-chg{color:#93c5fd}
+.chart-bars{display:flex;align-items:flex-end;gap:6px;height:90px;background:#fff;border-radius:12px;padding:12px 16px 0;border:1px solid var(--slate-100)}
+.bar{flex:1;border-radius:4px 4px 0 0;min-height:8px}
+.event-feed{display:flex;flex-direction:column;gap:8px;margin-top:14px}
+.ev{display:flex;align-items:center;gap:10px;padding:10px 12px;background:var(--slate-50);border-radius:10px;border:1px solid var(--slate-100)}
+.ev-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.ev-txt{font-size:12px;font-weight:600;color:var(--slate-700)}
+.ev-time{font-size:11px;color:var(--slate-400);margin-left:auto}
+.float-badge{position:absolute;top:-16px;right:-16px;background:var(--blue-600);color:#fff;padding:8px 14px;border-radius:12px;font-size:12px;font-weight:700;box-shadow:0 6px 20px rgba(37,99,235,.4);white-space:nowrap}
+
+/* ── STATS BAR ── */
+.stats-bar{background:#fff;border-top:1px solid var(--slate-100);border-bottom:1px solid var(--slate-100);padding:48px 0}
+.stats-row{display:flex;flex-wrap:wrap;justify-content:space-around;gap:32px;align-items:center}
+.stat-item{text-align:center}
+.stat-num{font-size:26px;font-weight:900;color:var(--blue-600);line-height:1}
+.stat-desc{font-size:13px;color:var(--slate-500);font-weight:500;margin-top:4px}
+
+/* ── PROBLEM ── */
+.problem{padding:96px 0;background:var(--slate-900);color:#fff;position:relative;overflow:hidden}
+.problem::before{content:'';position:absolute;width:500px;height:500px;background:radial-gradient(circle,rgba(37,99,235,.15),transparent 70%);top:-100px;left:-100px;border-radius:50%}
+.prob-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;position:relative}
+.sec-tag{display:inline-block;padding:4px 14px;background:rgba(37,99,235,.25);border:1px solid rgba(37,99,235,.4);border-radius:100px;font-size:11px;font-weight:700;color:var(--blue-400);letter-spacing:.1em;text-transform:uppercase;margin-bottom:20px}
+.problem h2{font-size:clamp(26px,3.5vw,44px);font-weight:900;line-height:1.15;margin-bottom:20px}
+.problem p{font-size:17px;color:rgba(255,255,255,.65);font-weight:500;line-height:1.7}
+.pain-cards{display:flex;flex-direction:column;gap:14px}
+.pain{display:flex;align-items:flex-start;gap:14px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:18px 20px}
+.pain-icon{width:36px;height:36px;background:rgba(239,68,68,.15);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px}
+.pain-title{font-size:15px;font-weight:700;color:#fff;margin-bottom:4px}
+.pain-desc{font-size:13px;color:rgba(255,255,255,.5);line-height:1.6}
+
+/* ── SERVICES ── */
+.services{padding:100px 0;background:#fff}
+.sec-header{text-align:center;max-width:640px;margin:0 auto 64px}
+.sec-header h2{font-size:clamp(24px,3.5vw,42px);font-weight:900;margin-bottom:16px}
+.sec-header p{font-size:17px;color:var(--slate-500);font-weight:500;line-height:1.7}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.svc-card{border-radius:24px;overflow:hidden;border:1.5px solid var(--slate-100);transition:all .3s;cursor:default}
+.svc-card:hover{box-shadow:0 20px 60px rgba(15,23,42,.1);transform:translateY(-6px);border-color:var(--blue-200)}
+.svc-top{padding:32px 28px 24px;background:var(--slate-50)}
+.svc-icon{width:56px;height:56px;border-radius:16px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;font-size:26px}
+.svc-title{font-size:20px;font-weight:800;color:var(--slate-900);margin-bottom:8px}
+.svc-desc{font-size:14px;color:var(--slate-500);line-height:1.6;font-weight:500}
+.svc-features{padding:20px 28px 28px;background:#fff}
+.svc-features ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+.svc-features li{display:flex;align-items:center;gap:10px;font-size:13px;font-weight:600;color:var(--slate-700)}
+.svc-features li::before{content:'';width:20px;height:20px;border-radius:50%;background:var(--blue-50);border:1px solid var(--blue-200);flex-shrink:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232563eb' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E");background-size:12px;background-repeat:no-repeat;background-position:center}
+
+/* ── HOW IT WORKS ── */
+.how{padding:100px 0;background:var(--slate-50);border-top:1px solid var(--slate-100)}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;margin-top:64px}
+.steps::before{content:'';position:absolute;top:32px;left:12.5%;right:12.5%;height:2px;background:linear-gradient(90deg,var(--blue-200),var(--blue-400),var(--blue-200));z-index:0}
+.step{text-align:center;padding:0 16px;position:relative;z-index:1}
+.step-num{width:64px;height:64px;border-radius:50%;background:var(--blue-600);color:#fff;font-size:22px;font-weight:900;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;box-shadow:0 8px 24px rgba(37,99,235,.3);border:3px solid #fff}
+.step-title{font-size:16px;font-weight:800;color:var(--slate-900);margin-bottom:8px}
+.step-desc{font-size:13px;color:var(--slate-500);font-weight:500;line-height:1.6}
+
+/* ── BENEFITS ── */
+.benefits{padding:100px 0;background:var(--blue-600);color:#fff;position:relative;overflow:hidden}
+.benefits::after{content:'';position:absolute;width:400px;height:400px;background:rgba(255,255,255,.05);border-radius:50%;bottom:-100px;right:-100px}
+.ben-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;position:relative;z-index:1}
+.benefits h2{font-size:clamp(26px,3.5vw,42px);font-weight:900;line-height:1.2;margin-bottom:10px}
+.benefits .sub{font-size:17px;color:rgba(255,255,255,.65);margin-bottom:40px;font-weight:500}
+.ben-list{display:flex;flex-direction:column;gap:14px}
+.ben-item{display:flex;align-items:center;gap:14px;padding:16px 20px;background:rgba(255,255,255,.12);border-radius:14px;border:1px solid rgba(255,255,255,.15)}
+.ben-check{width:28px;height:28px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.ben-check svg{width:14px;height:14px}
+.ben-text{font-size:16px;font-weight:700}
+.ben-right{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:28px;padding:32px;backdrop-filter:blur(10px)}
+.br-title{font-size:12px;font-weight:700;color:rgba(255,255,255,.5);letter-spacing:.12em;text-transform:uppercase;margin-bottom:28px}
+.metric{display:flex;align-items:center;gap:16px;padding:16px 0;border-bottom:1px solid rgba(255,255,255,.1)}
+.metric:last-child{border-bottom:none}
+.metric-label{font-size:14px;font-weight:600;color:rgba(255,255,255,.8);flex:1}
+.metric-bar-wrap{flex:2;background:rgba(255,255,255,.15);border-radius:100px;height:8px;overflow:hidden}
+.metric-bar{height:100%;border-radius:100px;background:#fff;transition:width 1.5s ease}
+.metric-pct{font-size:14px;font-weight:900;color:#fff;width:40px;text-align:right}
+
+/* ── TESTIMONIAL ── */
+.reviews{padding:96px 0;background:#fff}
+.rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:64px}
+.rev-card{background:var(--slate-50);border-radius:20px;padding:28px;border:1px solid var(--slate-100);transition:all .3s}
+.rev-card:hover{background:#fff;box-shadow:0 12px 40px rgba(15,23,42,.08);transform:translateY(-4px)}
+.stars{color:var(--blue-500);font-size:16px;margin-bottom:16px;letter-spacing:2px}
+.rev-text{font-size:15px;color:var(--slate-700);line-height:1.7;font-weight:500;margin-bottom:20px}
+.rev-author{display:flex;align-items:center;gap:12px}
+.rev-avatar{width:40px;height:40px;border-radius:50%;background:var(--blue-600);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:800;color:#fff}
+.rev-name{font-size:14px;font-weight:700;color:var(--slate-900)}
+.rev-role{font-size:12px;color:var(--slate-400);font-weight:500}
+
+/* ── FAQ ── */
+.faq{padding:96px 0;background:var(--slate-50)}
+.faq-list{max-width:720px;margin:60px auto 0;display:flex;flex-direction:column;gap:12px}
+.faq-item{background:#fff;border-radius:16px;border:1px solid var(--slate-200);overflow:hidden}
+.faq-q{padding:20px 24px;font-size:15px;font-weight:700;color:var(--slate-900);cursor:pointer;display:flex;align-items:center;justify-content:space-between;transition:background .2s}
+.faq-q:hover{background:var(--blue-50)}
+.faq-icon{width:24px;height:24px;border-radius:50%;background:var(--blue-100);display:flex;align-items:center;justify-content:center;transition:transform .3s;flex-shrink:0}
+.faq-a{padding:0 24px;max-height:0;overflow:hidden;transition:all .35s;font-size:14px;color:var(--slate-600);line-height:1.7;font-weight:500}
+.faq-item.open .faq-a{max-height:200px;padding:0 24px 20px}
+.faq-item.open .faq-icon{transform:rotate(45deg);background:var(--blue-600);color:#fff}
+
+/* ── CTA ── */
+.cta{padding:100px 0;background:var(--slate-900);color:#fff;text-align:center;position:relative;overflow:hidden}
+.cta::before{content:'';position:absolute;width:700px;height:700px;background:radial-gradient(circle,rgba(37,99,235,.2),transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%);border-radius:50%}
+.cta-inner{position:relative;z-index:1;max-width:720px;margin:0 auto;padding:0 24px}
+.cta h2{font-size:clamp(28px,4.5vw,52px);font-weight:900;line-height:1.15;margin-bottom:20px}
+.cta p{font-size:19px;color:rgba(255,255,255,.6);margin-bottom:44px;line-height:1.7}
+.cta-btns{display:flex;flex-wrap:wrap;gap:16px;justify-content:center}
+.cta-wa{display:inline-flex;align-items:center;gap:10px;padding:18px 36px;background:#25d366;color:#fff;border-radius:16px;font-size:17px;font-weight:700;text-decoration:none;box-shadow:0 10px 32px rgba(37,211,102,.3);transition:all .2s}
+.cta-wa:hover{background:#22c55e;transform:translateY(-3px)}
+.cta-call{display:inline-flex;align-items:center;gap:10px;padding:18px 36px;background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.15);border-radius:16px;font-size:17px;font-weight:700;text-decoration:none;transition:all .2s}
+.cta-call:hover{background:rgba(255,255,255,.18);transform:translateY(-3px)}
+.guarantee{display:inline-flex;align-items:center;gap:8px;margin-top:32px;font-size:13px;color:rgba(255,255,255,.4);font-weight:500}
+.guarantee span{color:rgba(255,255,255,.7)}
+
+/* ── WHO WE ARE ── */
+.whoweare{padding:100px 0;background:var(--slate-50);border-top:1px solid var(--slate-100)}
+.founder-grid{display:grid;grid-template-columns:320px 1fr;gap:60px;align-items:flex-start;margin-top:64px}
+.founder-img-wrap{position:relative;border-radius:24px;overflow:hidden;box-shadow:0 20px 60px rgba(15,23,42,.12);border:1px solid var(--slate-100)}
+.founder-img{width:100%;height:360px;object-fit:cover;object-position:top;display:block}
+.founder-social-bar{display:flex;gap:10px;padding:16px;background:#fff;border-top:1px solid var(--slate-100)}
+.fsoc-btn{flex:1;display:flex;align-items:center;justify-content:center;gap:6px;padding:10px;background:var(--blue-50);border:1px solid var(--blue-200);border-radius:10px;font-size:12px;font-weight:700;color:var(--blue-700);text-decoration:none;transition:all .2s}
+.fsoc-btn:hover{background:var(--blue-600);color:#fff;border-color:var(--blue-600)}
+.founder-tag{display:inline-block;padding:4px 14px;background:var(--blue-100);color:var(--blue-700);border-radius:100px;font-size:12px;font-weight:700;letter-spacing:.06em;margin-bottom:12px}
+.founder-name{font-size:clamp(24px,3vw,36px);font-weight:900;color:var(--slate-900);margin-bottom:16px}
+.founder-bio{font-size:15px;color:var(--slate-600);line-height:1.75;font-weight:500}
+.founder-stats{display:flex;gap:32px;margin-top:32px;padding-top:28px;border-top:1px solid var(--slate-200)}
+.fstat-num{font-size:28px;font-weight:900;color:var(--blue-600);line-height:1}
+.fstat-label{font-size:12px;color:var(--slate-500);font-weight:600;margin-top:4px}
+
+/* ── TEAM ── */
+.team-sec{padding:100px 0;background:#fff}
+.team-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:64px}
+.team-card{border-radius:24px;border:1.5px solid var(--slate-100);overflow:hidden;transition:all .3s;display:flex;flex-direction:column}
+.team-card:hover{box-shadow:0 20px 56px rgba(15,23,42,.1);transform:translateY(-6px);border-color:var(--blue-200)}
+.team-img-wrap{height:260px;overflow:hidden;background:var(--blue-50);position:relative}
+.team-img{width:100%;height:100%;object-fit:cover;object-position:top;display:block;transition:transform .4s}
+.team-card:hover .team-img{transform:scale(1.04)}
+.team-info{padding:24px 28px 28px;background:#fff;flex:1}
+.team-role-badge{display:inline-block;padding:3px 12px;background:var(--blue-50);color:var(--blue-700);border-radius:100px;font-size:11px;font-weight:700;border:1px solid var(--blue-200);margin-bottom:10px}
+.team-name{font-size:20px;font-weight:800;color:var(--slate-900);margin-bottom:3px}
+.team-title{font-size:13px;font-weight:600;color:var(--blue-600);margin-bottom:14px}
+.team-bio{font-size:13px;color:var(--slate-500);line-height:1.7;font-weight:500;margin-bottom:16px}
+.team-socials{display:flex;gap:8px}
+.tsoc{width:34px;height:34px;border-radius:9px;background:var(--slate-50);border:1px solid var(--slate-200);display:flex;align-items:center;justify-content:center;color:var(--slate-600);text-decoration:none;transition:all .2s}
+.tsoc:hover{background:var(--blue-600);border-color:var(--blue-600);color:#fff}
+.contact-sec{padding:100px 0;background:#fff}
+.contact-grid{display:grid;grid-template-columns:1fr 1.6fr;gap:64px;align-items:flex-start;margin-top:64px}
+.contact-info h3{font-size:24px;font-weight:800;color:var(--slate-900)}
+.info-list{display:flex;flex-direction:column;gap:20px}
+.info-item{display:flex;align-items:flex-start;gap:14px}
+.info-icon{width:44px;height:44px;border-radius:12px;background:var(--blue-50);border:1px solid var(--blue-100);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.info-label{font-size:12px;font-weight:700;color:var(--slate-400);text-transform:uppercase;letter-spacing:.08em;margin-bottom:3px}
+.info-val{font-size:15px;font-weight:600;color:var(--slate-800)}
+.contact-form-wrap{background:var(--slate-50);border-radius:24px;padding:36px;border:1px solid var(--slate-100)}
+.contact-form{display:flex;flex-direction:column;gap:18px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.form-group{display:flex;flex-direction:column;gap:7px}
+.form-group label{font-size:13px;font-weight:700;color:var(--slate-700)}
+.form-group input,.form-group select,.form-group textarea{padding:12px 16px;border:1.5px solid var(--slate-200);border-radius:12px;font-size:14px;font-weight:500;color:var(--slate-800);background:#fff;font-family:inherit;transition:border-color .2s,box-shadow .2s;outline:none;resize:none}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--blue-400);box-shadow:0 0 0 3px rgba(37,99,235,.1)}
+.form-group select{cursor:pointer;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2.5'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center}
+.form-btn{display:flex;align-items:center;justify-content:center;gap:10px;padding:15px 28px;background:var(--blue-600);color:#fff;border:none;border-radius:14px;font-size:16px;font-weight:700;cursor:pointer;font-family:inherit;transition:all .2s;box-shadow:0 6px 20px rgba(37,99,235,.25)}
+.form-btn:hover{background:var(--blue-700);transform:translateY(-2px);box-shadow:0 10px 28px rgba(37,99,235,.3)}
+
+/* ── FOOTER ── */
+.site-footer{background:var(--slate-900);color:#fff;padding:64px 0 0}
+.footer-top{display:grid;grid-template-columns:260px 1fr;gap:64px;padding-bottom:56px;border-bottom:1px solid rgba(255,255,255,.08)}
+.foot-logo{display:flex;align-items:center;gap:10px;margin-bottom:18px}
+.foot-tagline{font-size:14px;color:rgba(255,255,255,.45);line-height:1.7;font-weight:500}
+.footer-links-col{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+.footer-col{display:flex;flex-direction:column;gap:12px}
+.foot-col-title{font-size:13px;font-weight:800;color:#fff;letter-spacing:.06em;margin-bottom:4px}
+.footer-col a,.footer-col span{font-size:14px;color:rgba(255,255,255,.45);text-decoration:none;font-weight:500;transition:color .2s}
+.footer-col a:hover{color:#fff}
+.footer-bottom{display:flex;align-items:center;justify-content:space-between;padding:24px 0;flex-wrap:wrap;gap:16px}
+.foot-copy{font-size:13px;color:rgba(255,255,255,.3);font-weight:500}
+.foot-socials{display:flex;gap:10px}
+.social-icon{width:38px;height:38px;border-radius:10px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.5);text-decoration:none;transition:all .2s}
+.social-icon:hover{background:var(--blue-600);border-color:var(--blue-600);color:#fff}
+
+/* ── ANIMATIONS ── */
+.fade-up{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease}
+.fade-up.in{opacity:1;transform:none}
+@media(max-width:900px){
+  .nav-links{display:none}
+  .hero-grid,.prob-grid,.ben-grid,.contact-grid,.founder-grid{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr 1fr}
+  .steps::before{display:none}
+  .services-grid,.rev-grid,.team-grid{grid-template-columns:1fr}
+  .footer-top{grid-template-columns:1fr}
+  .footer-links-col{grid-template-columns:1fr 1fr}
+  .form-row{grid-template-columns:1fr}
+  .founder-img{height:280px}
+  .founder-stats{gap:20px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="w">
+    <div class="nav-row">
+      <a href="#" class="brand">
+        <div class="brand-icon" style="background:linear-gradient(135deg,#1e40af,#2563eb);width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(37,99,235,.35)">
+          <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 26L14 6h4l10 20h-4.5l-2-4H10.5l-2 4H4z" fill="white" opacity="0.95"/>
+            <path d="M12 18l4-8 4 8H12z" fill="white" opacity="0.4"/>
+            <circle cx="26" cy="8" r="3" fill="#93c5fd"/>
+          </svg>
+        </div>
+        <span class="brand-name" style="font-size:17px">Adora<b style="color:var(--blue-600)">-</b> <span style="font-weight:500;color:var(--slate-600);font-size:14px">Digital Agency</span></span>
+      </a>
+      <div class="nav-links">
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="#team">Team</a>
+        <a href="#reviews">Reviews</a>
+        <a href="https://www.facebook.com/profile.php?id=61588208316686" target="_blank" rel="noopener" class="nav-btn">Inbox করুন →</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="w">
+    <div class="hero-grid">
+      <div class="fade-up">
+        <div class="hero-badge"><span class="badge-dot"></span> Bangladesh's Trusted Tracking Expert</div>
+        <h1>আপনার Facebook Ads-এর Data কি <span class="hl">সঠিক আসছে?</span></h1>
+        <p class="hero-sub">Pixel সঠিকভাবে সেটআপ না থাকলে আপনার প্রতিটি টাকা নষ্ট হচ্ছে। আমরা আপনার Facebook Pixel, Conversion API এবং GA4 professionally setup করি।</p>
+        <div class="hero-btns">
+          <a href="https://www.facebook.com/profile.php?id=61588208316686" target="_blank" rel="noopener" class="btn-p">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            এখনই Inbox করুন
+          </a>
+          <a href="#services" class="btn-s">
+            Services দেখুন
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="fade-up" style="transition-delay:.15s">
+        <div class="dash" style="position:relative">
+          <div class="float-badge">✓ Live Tracking Active</div>
+          <div class="dash-topbar">
+            <div class="dtb-dot" style="background:#f87171"></div>
+            <div class="dtb-dot" style="background:#fbbf24"></div>
+            <div class="dtb-dot" style="background:#4ade80"></div>
+            <div class="dtb-url">events.manager.facebook.com</div>
+          </div>
+          <div class="dash-stats">
+            <div class="dstat">
+              <div class="dstat-label">Purchase Events</div>
+              <div class="dstat-val">1,248</div>
+              <div class="dstat-chg">↑ +38% this week</div>
+            </div>
+            <div class="dstat">
+              <div class="dstat-label">Data Match Rate</div>
+              <div class="dstat-val">99.2%</div>
+              <div class="dstat-chg">↑ Industry avg: 72%</div>
+            </div>
+            <div class="dstat full">
+              <div class="dstat-label">Server-Side Events (CAPI)</div>
+              <div class="dstat-val">✓ Connected & Firing</div>
+              <div class="dstat-chg">3,942 events today</div>
+            </div>
+          </div>
+          <div class="chart-bars">
+            <div class="bar" style="height:40%;background:#bfdbfe"></div>
+            <div class="bar" style="height:55%;background:#93c5fd"></div>
+            <div class="bar" style="height:70%;background:#60a5fa"></div>
+            <div class="bar" style="height:60%;background:#3b82f6"></div>
+            <div class="bar" style="height:85%;background:#2563eb"></div>
+            <div class="bar" style="height:75%;background:#1d4ed8"></div>
+            <div class="bar" style="height:100%;background:#1e40af"></div>
+          </div>
+          <div class="event-feed">
+            <div class="ev"><div class="ev-dot" style="background:#10b981"></div><span class="ev-txt">Purchase — ৳ 2,850</span><span class="ev-time">just now</span></div>
+            <div class="ev"><div class="ev-dot" style="background:#3b82f6"></div><span class="ev-txt">Lead Form Submitted</span><span class="ev-time">2m ago</span></div>
+            <div class="ev"><div class="ev-dot" style="background:#f59e0b"></div><span class="ev-txt">Add to Cart — 4 items</span><span class="ev-time">5m ago</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- STATS BAR -->
+<section class="stats-bar">
+  <div class="w">
+    <div class="stats-row">
+      <div class="stat-item"><div class="stat-num">50+</div><div class="stat-desc">Clients Served</div></div>
+      <div class="stat-item"><div class="stat-num">99%</div><div class="stat-desc">Data Accuracy</div></div>
+      <div class="stat-item"><div class="stat-num">3x</div><div class="stat-desc">Average ROAS Improvement</div></div>
+      <div class="stat-item"><div class="stat-num">48h</div><div class="stat-desc">Setup Delivery Time</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section class="problem">
+  <div class="w">
+    <div class="prob-grid">
+      <div class="fade-up">
+        <div class="sec-tag">সমস্যাটা কী?</div>
+        <h2>সঠিক Tracking ছাড়া আপনার ads blindly চলছে</h2>
+        <p>বেশিরভাগ business owner জানেনই না যে তাদের Pixel সঠিকভাবে কাজ করছে কিনা। এর ফলে প্রতিদিন হাজার হাজার টাকার বিজ্ঞাপন নষ্ট হচ্ছে।</p>
+      </div>
+      <div class="pain-cards fade-up" style="transition-delay:.1s">
+        <div class="pain">
+          <div class="pain-icon">📉</div>
+          <div>
+            <div class="pain-title">Inaccurate Conversion Data</div>
+            <div class="pain-desc">কোন ad থেকে sale হচ্ছে বুঝতে পারছেন না — ফলে wrong ad-এ টাকা ঢালছেন।</div>
+          </div>
+        </div>
+        <div class="pain">
+          <div class="pain-icon">🔒</div>
+          <div>
+            <div class="pain-title">iOS 14.5 Tracking Block</div>
+            <div class="pain-desc">Apple-এর privacy update-এর কারণে Pixel data 40-60% কমে গেছে। CAPI ছাড়া solution নেই।</div>
+          </div>
+        </div>
+        <div class="pain">
+          <div class="pain-icon">💸</div>
+          <div>
+            <div class="pain-title">High CPA, Low ROAS</div>
+            <div class="pain-desc">Poor tracking মানে Facebook algorithm সঠিক audience খুঁজে পাচ্ছে না — খরচ বাড়ছে, result কমছে।</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="w">
+    <div class="sec-header fade-up">
+      <div class="sec-tag" style="background:var(--blue-50);color:var(--blue-700);border:1px solid var(--blue-200)">আমাদের Services</div>
+      <h2>আমরা যা Setup করে দিই</h2>
+      <p>Professional tracking setup-এর মাধ্যমে আপনার Facebook ads-কে data-driven করে তুলুন।</p>
+    </div>
+    <div class="services-grid">
+
+      <div class="svc-card fade-up">
+        <div class="svc-top">
+          <div class="svc-icon" style="background:#eff6ff">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg>
+          </div>
+          <div class="svc-title">Facebook Pixel & Event Tracking</div>
+          <div class="svc-desc">আপনার website-এ সঠিকভাবে Pixel install করে সব important events track করা হবে।</div>
+        </div>
+        <div class="svc-features">
+          <ul>
+            <li>Facebook Pixel Install</li>
+            <li>Standard Events Setup</li>
+            <li>Purchase Event Setup</li>
+            <li>Lead Event Setup</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="svc-card fade-up" style="transition-delay:.1s">
+        <div class="svc-top" style="background:linear-gradient(135deg,#eff6ff,#f0fdf4)">
+          <div class="svc-icon" style="background:#fff;box-shadow:0 2px 8px rgba(37,99,235,.15)">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          </div>
+          <div class="svc-title">Conversion API (CAPI)</div>
+          <div class="svc-desc">Server-side tracking দিয়ে iOS 14.5 এবং ad blocker-এর বাধা পেরিয়ে 100% accurate data পাবেন।</div>
+        </div>
+        <div class="svc-features">
+          <ul>
+            <li>Conversion API Integration</li>
+            <li>Server-Side Event Tracking</li>
+            <li>Data Accuracy Improvement</li>
+            <li>Deduplication Setup</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="svc-card fade-up" style="transition-delay:.2s">
+        <div class="svc-top">
+          <div class="svc-icon" style="background:#fff7ed">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ea580c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+          </div>
+          <div class="svc-title">Google Analytics 4 (GA4)</div>
+          <div class="svc-desc">Advanced GA4 setup দিয়ে আপনার customer journey সম্পূর্ণরূপে বুঝুন।</div>
+        </div>
+        <div class="svc-features">
+          <ul>
+            <li>GA4 Property Install</li>
+            <li>Custom Event Tracking</li>
+            <li>Conversion Tracking Setup</li>
+            <li>Goal & Funnel Configuration</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how" id="how">
+  <div class="w">
+    <div class="sec-header fade-up">
+      <div class="sec-tag" style="background:var(--blue-50);color:var(--blue-700);border:1px solid var(--blue-200)">আমাদের Process</div>
+      <h2>কাজ কীভাবে হয়?</h2>
+      <p>মাত্র ৪টি সহজ ধাপে আপনার tracking setup সম্পন্ন হয়।</p>
+    </div>
+    <div class="steps">
+      <div class="step fade-up">
+        <div class="step-num">১</div>
+        <div class="step-title">Inbox করুন</div>
+        <div class="step-desc">আপনার website ও requirements জানান — আমরা সাথে সাথে reply দেব।</div>
+      </div>
+      <div class="step fade-up" style="transition-delay:.1s">
+        <div class="step-num">২</div>
+        <div class="step-title">Audit & Plan</div>
+        <div class="step-desc">আপনার current tracking-এর সমস্যা বের করে একটি custom plan তৈরি করা হবে।</div>
+      </div>
+      <div class="step fade-up" style="transition-delay:.2s">
+        <div class="step-num">৩</div>
+        <div class="step-title">Setup করা হয়</div>
+        <div class="step-desc">Professional ভাবে Pixel, CAPI ও GA4 setup করা হয় — 48 ঘণ্টার মধ্যে।</div>
+      </div>
+      <div class="step fade-up" style="transition-delay:.3s">
+        <div class="step-num">৪</div>
+        <div class="step-title">Test & Handover</div>
+        <div class="step-desc">সব events test করে আপনাকে report দেওয়া হবে এবং support দেওয়া হবে।</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFITS -->
+<section class="benefits" id="benefits">
+  <div class="w">
+    <div class="ben-grid">
+      <div class="fade-up">
+        <h2>সঠিক Tracking-এ কী পাবেন?</h2>
+        <p class="sub">শুধু data না — আপনার পুরো ads strategy পাল্টে যাবে।</p>
+        <div class="ben-list">
+          <div class="ben-item">
+            <div class="ben-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <span class="ben-text">Ad performance উল্লেখযোগ্যভাবে improve হয়</span>
+          </div>
+          <div class="ben-item">
+            <div class="ben-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <span class="ben-text">CPA কমে, ROAS বাড়ে significantly</span>
+          </div>
+          <div class="ben-item">
+            <div class="ben-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <span class="ben-text">Facebook Lookalike audience আরও accurate হয়</span>
+          </div>
+          <div class="ben-item">
+            <div class="ben-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <span class="ben-text">Retargeting campaigns আরও effective হয়</span>
+          </div>
+          <div class="ben-item">
+            <div class="ben-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <span class="ben-text">Complete customer journey বোঝা যায়</span>
+          </div>
+        </div>
+      </div>
+      <div class="ben-right fade-up" style="transition-delay:.15s">
+        <div class="br-title">Average Client Results After Setup</div>
+        <div class="metric">
+          <div class="metric-label">Data Accuracy</div>
+          <div class="metric-bar-wrap"><div class="metric-bar" data-w="99" style="width:0%"></div></div>
+          <div class="metric-pct">99%</div>
+        </div>
+        <div class="metric">
+          <div class="metric-label">ROAS Improvement</div>
+          <div class="metric-bar-wrap"><div class="metric-bar" data-w="85" style="width:0%;background:#93c5fd"></div></div>
+          <div class="metric-pct">+3x</div>
+        </div>
+        <div class="metric">
+          <div class="metric-label">CPA Reduction</div>
+          <div class="metric-bar-wrap"><div class="metric-bar" data-w="65" style="width:0%;background:rgba(255,255,255,.5)"></div></div>
+          <div class="metric-pct">-45%</div>
+        </div>
+        <div class="metric">
+          <div class="metric-label">Event Match Quality</div>
+          <div class="metric-bar-wrap"><div class="metric-bar" data-w="92" style="width:0%"></div></div>
+          <div class="metric-pct">EMQ 9+</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews" id="reviews">
+  <div class="w">
+    <div class="sec-header fade-up">
+      <div class="sec-tag" style="background:var(--blue-50);color:var(--blue-700);border:1px solid var(--blue-200)">Client Reviews</div>
+      <h2>আমাদের clients কী বলছেন?</h2>
+      <p>আমাদের প্রতিটি client-এর সাফল্যই আমাদের সেরা পুরস্কার।</p>
+    </div>
+    <div class="rev-grid">
+      <div class="rev-card fade-up">
+        <div class="stars" style="color:#f59e0b">★★★★<span style="color:#d1d5db">★</span></div>
+        <p class="rev-text">"আগে Pixel setup ছিল কিন্তু সঠিকভাবে কাজ করছিল না। Adora Digital Agency সেটআপ করার পর আমার Facebook ads ROAS 2.1x থেকে বেড়ে 4.8x হয়েছে।"</p>
+        <div class="rev-author">
+          <div class="rev-avatar">RA</div>
+          <div>
+            <div class="rev-name">Rakibul Alam</div>
+            <div class="rev-role">Shopify Store Owner, Dhaka</div>
+          </div>
+        </div>
+      </div>
+      <div class="rev-card fade-up" style="transition-delay:.1s">
+        <div class="stars" style="color:#f59e0b">★★★★<span style="color:#d1d5db">★</span></div>
+        <p class="rev-text">"CAPI integration-এর পর আমার iOS user-দের conversion track হচ্ছে। CPA 40% কমে গেছে এবং sales বেড়েছে। অসাধারণ service!"</p>
+        <div class="rev-author">
+          <div class="rev-avatar">SH</div>
+          <div>
+            <div class="rev-name">Sumaia Hossain</div>
+            <div class="rev-role">E-commerce Brand, Chittagong</div>
+          </div>
+        </div>
+      </div>
+      <div class="rev-card fade-up" style="transition-delay:.2s">
+        <div class="stars" style="color:#f59e0b">★★★★★</div>
+        <p class="rev-text">"GA4 + Facebook Pixel setup একসাথে করে দিয়েছে। এখন আমি clearly বুঝতে পারছি কোন channel থেকে সবচেয়ে বেশি revenue আসছে।"</p>
+        <div class="rev-author">
+          <div class="rev-avatar">MK</div>
+          <div>
+            <div class="rev-name">Mahfuz Karim</div>
+            <div class="rev-role">Digital Agency Owner, Sylhet</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+  <div class="w">
+    <div class="sec-header fade-up">
+      <div class="sec-tag" style="background:var(--blue-50);color:var(--blue-700);border:1px solid var(--blue-200)">FAQ</div>
+      <h2>সাধারণ প্রশ্ন</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q">Setup করতে কত সময় লাগে? <div class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>
+        <div class="faq-a">সাধারণত 24-48 ঘণ্টার মধ্যে সম্পূর্ণ setup করে দেওয়া হয়। জটিল setup-এর ক্ষেত্রে 72 ঘণ্টা পর্যন্ত সময় লাগতে পারে।</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">আমার website কোন platform-এ সেটআপ করা যায়? <div class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>
+        <div class="faq-a">Shopify, WooCommerce, WordPress, custom website — সব ধরনের platform-এ কাজ করা হয়। Shopify store-এর জন্য আমাদের বিশেষ expertise আছে।</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Conversion API কি সত্যিই দরকার? <div class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>
+        <div class="faq-a">হ্যাঁ, iOS 14.5+ এবং ad blocker-এর কারণে শুধু Pixel দিয়ে ৩০-৫০% data miss হয়। CAPI এই গ্যাপ পূরণ করে server থেকে সরাসরি Facebook-এ data পাঠায়।</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Setup-এর পর support পাব? <div class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>
+        <div class="faq-a">অবশ্যই। Setup-এর পর 30 দিন free support দেওয়া হয়। কোনো issue হলে সাথে সাথে fix করে দেওয়া হবে।</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHO WE ARE -->
+<section class="whoweare" id="about">
+  <div class="w">
+    <div class="sec-header fade-up">
+      <div class="sec-tag" style="background:var(--blue-50);color:var(--blue-700);border:1px solid var(--blue-200)">আমাদের সম্পর্কে</div>
+      <h2>Who We Are</h2>
+      <p>আমরা একটি passionate team যারা বিশ্বাস করি সঠিক data-ই business-এর সেরা অস্ত্র।</p>
+    </div>
+    <div class="founder-grid fade-up">
+      <div class="founder-img-wrap">
+        <img src="https://i.imgur.com/LizVThF.jpg" alt="Nahian Bhuiyan" class="founder-img" 
+          onerror="this.onerror=null;this.src='https://i.imgur.com/LizVThF.png';this.onerror=function(){this.style.display='none';this.parentElement.style.background='linear-gradient(135deg,#1e40af,#3b82f6)';this.parentElement.innerHTML+='<div style=\'display:flex;flex-direction:column;align-items:center;justify-content:center;height:360px;color:white\'><div style=\'font-size:72px;font-weight:900\'>NB</div><div style=\'font-size:14px;opacity:.7\'>Nahian Bhuiyan</div></div>'}">
+        <div class="founder-social-bar">
+          <a href="https://www.facebook.com/nahianbhuiyan.4197" target="_blank" rel="noopener" class="fsoc-btn">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg> Facebook
+          </a>
+          <a href="https://www.linkedin.com/in/nahian-bhuiyan-b06592400/" target="_blank" rel="noopener" class="fsoc-btn">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg> LinkedIn
+          </a>
+        </div>
+      </div>
+      <div class="founder-info">
+        <div class="founder-tag">Founder & CEO</div>
+        <h3 class="founder-name">Nahian Bhuiyan</h3>
+        <p class="founder-bio">আমি Nahian Bhuiyan — Adora Digital Agency-র Founder & CEO। Facebook Ads tracking ও digital marketing-এ আমার প্রায় ১ বছরের হাতে-কলমে অভিজ্ঞতা রয়েছে। আমি বিশ্বাস করি যে প্রতিটি business-এর জন্য সঠিক data সংগ্রহ ও সঠিক সিদ্ধান্ত নেওয়াটাই সাফল্যের মূল চাবিকাঠি।</p>
+        <p class="founder-bio" style="margin-top:14px">আমাদের লক্ষ্য হলো বাংলাদেশের ছোট ও মাঝারি ব্যবসাগুলোকে data-driven marketing-এর মাধ্যমে এগিয়ে নিয়ে যাওয়া।</p>
+        <div class="founder-stats">
+          <div class="fstat"><div class="fstat-num">1+</div><div class="fstat-label">Year Experience</div></div>
+          <div class="fstat"><div class="fstat-num">50+</div><div class="fstat-label">Projects Done</div></div>
+          <div class="fstat"><div class="fstat-num">100%</div><div class="fstat-label">Client Satisfaction</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MEET THE TEAM -->
+<section class="team-sec" id="team">
+  <div class="w">
+    <div class="sec-header fade-up">
+      <div class="sec-tag" style="background:var(--blue-50);color:var(--blue-700);border:1px solid var(--blue-200)">Our Team</div>
+      <h2>Meet Our Team</h2>
+      <p>আমাদের দলের প্রতিটি সদস্য তাদের কাজে dedicated এবং আপনার business growth-এ প্রতিশ্রুতিবদ্ধ।</p>
+    </div>
+    <div class="team-grid">
+      <div class="team-card fade-up">
+        <div class="team-img-wrap">
+          <img src="https://i.imgur.com/Shahran.jpg" alt="Shahran Hossain" class="team-img" onerror="this.parentElement.querySelector('.team-avatar-fallback').style.display='flex';this.style.display='none'">
+          <div class="team-avatar-fallback" style="display:none;width:100%;height:100%;background:linear-gradient(135deg,#dbeafe,#eff6ff);align-items:center;justify-content:center;font-size:40px;font-weight:900;color:var(--blue-600)">SH</div>
+        </div>
+        <div class="team-info">
+          <div class="team-role-badge">Partner</div>
+          <div class="team-name">Shahran Hossain</div>
+          <div class="team-title">Digital Marketing Strategist</div>
+          <p class="team-bio">Shahran আমাদের digital marketing strategy এবং client growth-এর দায়িত্বে আছেন। প্রায় ১ বছরের অভিজ্ঞতায় তিনি বিভিন্ন e-commerce ও service-based business-এর জন্য effective ad strategy তৈরি করেছেন।</p>
+          <div class="team-socials">
+            <a href="https://www.facebook.com/sh.shahran.2025" target="_blank" rel="noopener" class="tsoc">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </a>
+            <a href="https://www.linkedin.com/in/shahran-hossain-b40620385/" target="_blank" rel="noopener" class="tsoc">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="team-card fade-up" style="transition-delay:.12s">
+        <div class="team-img-wrap">
+          <img src="https://i.imgur.com/V7nZBkF.jpeg" alt="Imtiaz Tamzid" class="team-img" onerror="this.parentElement.querySelector('.team-avatar-fallback').style.display='flex';this.style.display='none'">
+          <div class="team-avatar-fallback" style="display:none;width:100%;height:100%;background:linear-gradient(135deg,#dbeafe,#eff6ff);align-items:center;justify-content:center;font-size:40px;font-weight:900;color:var(--blue-600)">IT</div>
+        </div>
+        <div class="team-info">
+          <div class="team-role-badge">Partner</div>
+          <div class="team-name">Imtiaz Tamzid</div>
+          <div class="team-title">Ads & Tracking Specialist</div>
+          <p class="team-bio">Imtiaz আমাদের Facebook Pixel, CAPI এবং GA4 technical setup-এর বিশেষজ্ঞ। প্রায় ১ বছরের অভিজ্ঞতায় তিনি বিভিন্ন ধরনের website-এ accurate tracking implementation করে clients-এর ad performance উল্লেখযোগ্যভাবে উন্নত করেছেন।</p>
+          <div class="team-socials">
+            <a href="https://www.facebook.com/share/14d85RwcvH3/" target="_blank" rel="noopener" class="tsoc">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </a>
+            <a href="https://www.linkedin.com/in/imtiaz-tamzid-908b173b4" target="_blank" rel="noopener" class="tsoc">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT FORM -->
+<section class="contact-sec" id="contact">
+  <div class="w">
+    <div class="sec-header fade-up">
+      <div class="sec-tag" style="background:var(--blue-50);color:var(--blue-700);border:1px solid var(--blue-200)">Free Consultation</div>
+      <h2>Get a Free Consultation</h2>
+      <p>Tell us about your business and we'll build a custom tracking plan — no obligation.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info fade-up">
+        <h3>Let's Grow Your Business</h3>
+        <p style="color:var(--slate-500);font-size:15px;margin:12px 0 32px;line-height:1.7">Ready to take your digital presence to the next level? Reach out and we'll get back to you within 24 hours.</p>
+        <div class="info-list">
+          <div class="info-item">
+            <div class="info-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div>
+              <div class="info-label">Office Address</div>
+              <div class="info-val">Feni Center, Feni District, Bangladesh</div>
+            </div>
+          </div>
+          <div class="info-item">
+            <div class="info-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.08 6.08l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            </div>
+            <div>
+              <div class="info-label">Phone</div>
+              <div class="info-val"><a href="tel:+8801990524197" style="color:var(--blue-600);text-decoration:none">+880 1990524197</a></div>
+            </div>
+          </div>
+          <div class="info-item">
+            <div class="info-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div>
+              <div class="info-label">Email</div>
+              <div class="info-val"><a href="mailto:nahianbhuiyan92@gmail.com" style="color:var(--blue-600);text-decoration:none">nahianbhuiyan92@gmail.com</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form-wrap fade-up" style="transition-delay:.12s">
+        <form class="contact-form" action="https://formspree.io/f/mdabkgpp" method="POST">
+          <div class="form-row">
+            <div class="form-group">
+              <label>First Name</label>
+              <input type="text" name="firstName" placeholder="Rafiq" required>
+            </div>
+            <div class="form-group">
+              <label>Last Name</label>
+              <input type="text" name="lastName" placeholder="Ahmed" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" name="email" placeholder="rafiq@company.com" required>
+          </div>
+          <div class="form-group">
+            <label>Phone Number</label>
+            <input type="tel" name="phone" placeholder="+880 1XXX-XXXXXX">
+          </div>
+          <div class="form-group">
+            <label>Service Interested In</label>
+            <select name="service" required>
+              <option value="" disabled selected>Select a service...</option>
+              <option>Facebook Pixel & Event Tracking</option>
+              <option>Conversion API (CAPI) Setup</option>
+              <option>Google Analytics 4 (GA4)</option>
+              <option>Full Tracking Package (Pixel + CAPI + GA4)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Message</label>
+            <textarea name="message" placeholder="Tell us about your business and goals..." rows="4"></textarea>
+          </div>
+          <button type="submit" class="form-btn">
+            <span id="btn-text">Send Message</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          </button>
+          <div id="form-success" style="display:none;margin-top:16px;padding:14px 18px;background:#f0fdf4;border:1px solid #bbf7d0;border-radius:12px;color:#15803d;font-size:14px;font-weight:600;">
+            ✓ আপনার message পাঠানো হয়েছে! আমরা 24 ঘণ্টার মধ্যে reply দেব।
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="w">
+    <div class="footer-top">
+      <div class="footer-brand-col">
+        <div class="foot-logo">
+          <img src="https://i.imgur.com/5BZHGlN.jpeg" alt="Adora Digital Agency" style="height:44px;width:auto;border-radius:10px;object-fit:contain" onerror="this.style.display='none';document.getElementById('foot-logo-fallback').style.display='flex'">
+          <div id="foot-logo-fallback" style="display:none;align-items:center;gap:8px">
+            <div class="brand-icon" style="width:40px;height:40px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></div>
+            <span class="brand-name">Adora<b>-</b> Digital Agency</span>
+          </div>
+        </div>
+        <p class="foot-tagline">Your trusted tracking & Facebook Ads expert in Bangladesh. We grow brands with data, accuracy, and results.</p>
+      </div>
+      <div class="footer-links-col">
+        <div class="footer-col">
+          <div class="foot-col-title">Services</div>
+          <a href="#services">Facebook Pixel</a>
+          <a href="#services">Conversion API</a>
+          <a href="#services">GA4 Setup</a>
+          <a href="#services">Full Tracking Package</a>
+        </div>
+        <div class="footer-col">
+          <div class="foot-col-title">Company</div>
+          <a href="#about">Who We Are</a>
+          <a href="#team">Our Team</a>
+          <a href="#reviews">Testimonials</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <div class="footer-col">
+          <div class="foot-col-title">Contact</div>
+          <span>Feni Center, Bangladesh</span>
+          <a href="tel:+8801990524197">+880 1990524197</a>
+          <a href="mailto:nahianbhuiyan92@gmail.com">nahianbhuiyan92@gmail.com</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="foot-copy">&copy; 2025 Adora Digital Agency. All rights reserved.</div>
+      <div class="foot-socials">
+        <a href="https://www.facebook.com/profile.php?id=61588208316686" target="_blank" rel="noopener" class="social-icon" aria-label="Facebook">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        </a>
+        <a href="https://www.instagram.com/growzenbd?igsh=MWJhazJzdnIxcTNz" target="_blank" rel="noopener" class="social-icon" aria-label="Instagram">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/nahian-bhuiyan-b06592400/" target="_blank" rel="noopener" class="social-icon" aria-label="LinkedIn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('s', scrollY > 60));
+
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+}, { threshold: 0.12 });
+document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+
+const barObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.querySelectorAll('.metric-bar').forEach(b => {
+        b.style.width = b.dataset.w + '%';
+      });
+    }
+  });
+}, { threshold: 0.3 });
+document.querySelectorAll('.ben-right').forEach(el => barObs.observe(el));
+
+document.querySelectorAll('.faq-q').forEach(q => {
+  q.addEventListener('click', () => {
+    const item = q.parentElement;
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  });
+});
+
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const t = document.querySelector(a.getAttribute('href'));
+    if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth' }); }
+  });
+});
+
+function handleForm(e) {
+  e.preventDefault();
+  const btn = e.target.querySelector('.form-btn');
+  const txt = document.getElementById('btn-text');
+  btn.disabled = true;
+  txt.textContent = 'Sending...';
+  setTimeout(() => {
+    btn.disabled = false;
+    txt.textContent = 'Send Message';
+    document.getElementById('form-success').style.display = 'block';
+    e.target.reset();
+    setTimeout(() => { document.getElementById('form-success').style.display = 'none'; }, 5000);
+  }, 1500);
+}
+</script>
+</body>
+</html>
